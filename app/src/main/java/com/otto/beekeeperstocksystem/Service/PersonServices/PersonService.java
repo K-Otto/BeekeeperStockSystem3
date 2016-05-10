@@ -11,8 +11,8 @@ import java.util.Set;
  */
 public interface PersonService {
 
-    public interface RAMService {
-        Person addPerosn(Person person);
+
+        Person addPerson(Person person);
 
         Person updatePerson(Person person);
 
@@ -24,4 +24,4 @@ public interface PersonService {
 
         int deleteAllPerson();
     }
-    }
+

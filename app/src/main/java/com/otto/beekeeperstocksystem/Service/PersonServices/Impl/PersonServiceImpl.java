@@ -10,6 +10,7 @@ import android.os.IBinder;
 import java.util.Set;
 import android.app.Service;
 
+import com.otto.beekeeperstocksystem.Conf.Util.App;
 import com.otto.beekeeperstocksystem.Domain.Person;
 
 import com.otto.beekeeperstocksystem.Repositories.Impl.PersonRepositoryImpl;
@@ -51,37 +52,37 @@ public class PersonServiceImpl extends Service implements PersonService {
 
     private PersonServiceImpl()
     {
-        personRepository = new PersonRepositoryImpl(this.getApplicationContext());
+        personRepository = new PersonRepositoryImpl(App.getAppContext());
     }
 
-
+    @Override
     public Person addPerson(Person person) {
         return personRepository.save(person);
     }
 
-
+    @Override
     public Person updatePerson(Person person) {
         return personRepository.update(person);
     }
 
-
+    @Override
     public Person getPerson(Long personID) {
         return personRepository.findById(personID);
     }
 
-
+    @Override
     public Set<Person> getAll() {
         Set<Person> ram;
         ram = personRepository.findAll();
         return ram;
     }
 
-
+    @Override
     public Person deletePerson(Person person) {
         return personRepository.delete(person);
     }
 
-
+    @Override
     public int deleteAllPerson() {
         return personRepository.deleteAll();
     }
