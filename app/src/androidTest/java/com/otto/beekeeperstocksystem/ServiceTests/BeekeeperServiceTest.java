@@ -31,7 +31,7 @@ public class BeekeeperServiceTest extends AndroidTestCase {
         this.mContext.bindService(intent, connection, Context.BIND_AUTO_CREATE);
         //Create
         Person person = PersonFactory.create("","","");
-        Beekeeper role = BeekeeperFactory.create( 11.00, person);
+        Beekeeper role = BeekeeperFactory.create( 10.00, person);
         beekeeper = new Beekeeper
                 .Builder‭()
                 .copy(role)
