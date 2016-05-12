@@ -37,7 +37,6 @@ public class PersonServiceImpl extends Service implements PersonService {
 
     private final IBinder localBinder = new ActivateServiceLocalBinder();
 
-    private PersonRepository repo;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -82,8 +81,5 @@ public class PersonServiceImpl extends Service implements PersonService {
         return personRepository.delete(person);
     }
 
-    @Override
-    public int deleteAllPerson() {
-        return personRepository.deleteAll();
-    }
+
 }

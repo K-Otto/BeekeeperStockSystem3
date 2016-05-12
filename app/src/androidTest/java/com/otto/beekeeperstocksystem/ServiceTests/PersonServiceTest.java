@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.test.AndroidTestCase;
+import junit.framework.Assert;
 
 import com.otto.beekeeperstocksystem.Conf.Util.App;
 import com.otto.beekeeperstocksystem.Domain.Person;
@@ -25,7 +26,8 @@ import java.util.Set;
 public class PersonServiceTest extends AndroidTestCase {
     private PersonServiceImpl personService;
     private boolean isBound;
-    Person person;
+
+    Person person = new Person();
     private Long id;
 
     @Override
@@ -34,10 +36,9 @@ public class PersonServiceTest extends AndroidTestCase {
         Intent intent = new Intent(this.getContext(), PersonServiceImpl.class);
         this.mContext.bindService(intent, connection, Context.BIND_AUTO_CREATE);
         //Create
-        Person role = PersonFactory.create("Karl", "Otto", "Karl@gmail.com");
+
         person = new Person
                 .Builder()
-                .copy(role)
                 .firstName("karl")
                 .lastName("otto")
                 .email("karl@gmail.com")
@@ -61,12 +62,17 @@ public class PersonServiceTest extends AndroidTestCase {
     };
 
     public void testAdd()throws Exception{
-        Person insertedPerson = personService.addPerson(person);
-        id = insertedPerson.getPersonId();
-        Assert.assertNotNull(insertedPerson);
 
-        Set<Person> allRam = personService.getAll();
-        Assert.assertTrue(allRam.size()>0);
+
+        System.out.print(person);
+
+        Person  insertedPersons = personService.addPerson(person);
+        id = insertedPersons.getPersonId();
+        Assert.assertNotNull(insertedPersons);
+
+        Set<Person> allPerson = personService.getAll();
+        Assert.assertTrue(allPerson.size()>0);
+
 
         //READ ENTITY
         Person entity = personService.getPerson(id);
@@ -85,5 +91,9 @@ public class PersonServiceTest extends AndroidTestCase {
         personService.deletePerson(updateEntity);
         Person deletedEntity = personService.getPerson(id);
         Assert.assertNull(deletedEntity);
+
+
+
+
     }
 }

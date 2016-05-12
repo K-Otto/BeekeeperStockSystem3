@@ -16,7 +16,7 @@ public class Person implements Serializable {
     private String email;
 
 
-    private Person() {
+    public Person() {
     }
 
     public Long getPersonId() {

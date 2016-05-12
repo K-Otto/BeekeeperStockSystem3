@@ -1,17 +1,19 @@
 package com.otto.beekeeperstocksystem.RepositoryTests;
 
-import android.test.AndroidTestCase;
+
 import com.otto.beekeeperstocksystem.Domain.Person;
 import com.otto.beekeeperstocksystem.Repositories.Impl.PersonRepositoryImpl;
 import com.otto.beekeeperstocksystem.Repositories.PersonRepository;
-import junit.framework.Assert;
+
 
 
 import java.util.Set;
-/**Sqlite (Xerial) - identifier.sqlite [2]
- * Created by Quam on 4/22/2016.
- */
+import junit.framework.Assert;
+import android.test.AndroidTestCase;
+
+
 public class PersonRepositoryTest extends AndroidTestCase{
+
     private static final String TAG="SETTINGS TEST";
     private Long id;
 
@@ -26,7 +28,7 @@ public class PersonRepositoryTest extends AndroidTestCase{
         Person insertedEntity = repo.save(createEntity);
         id=insertedEntity.getPersonId();
         Assert.assertNotNull(TAG+" CREATE",insertedEntity);
-
+        System.out.print(insertedEntity);
         //READ ALL
         Set<Person> settings = repo.findAll();
         Assert.assertTrue(TAG+" READ ALL",settings.size()>0);

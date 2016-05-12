@@ -22,6 +22,6 @@ public interface PersonService {
 
         Person deletePerson(Person person);
 
-        int deleteAllPerson();
+
     }
 
